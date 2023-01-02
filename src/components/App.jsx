@@ -27,8 +27,10 @@ export default class App extends Component {
     }
   }
 
-  componentDidUpdate() {
-    this.saveContactsToLs();
+  componentDidUpdate(_, prevState) {
+    if (prevState.contacts !== this.state.contacts) {
+      this.saveContactsToLs();
+    }
   }
 
   handleSubmitForm = (name, phone) => {
